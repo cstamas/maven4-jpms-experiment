@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>org.apache.maven</groupId>
+    <artifactId>maven-parent</artifactId>
+    <version>40</version>
+  </parent>
+
+  <groupId>org.cstamas.maven.jpms</groupId>
+  <artifactId>experiment</artifactId>
+  <version>1.0.0-SNAPSHOT</version>
+  <packaging>pom</packaging>
+
+  <name>Maven JPMS experiment</name>
+
+  <modules>
+    <module>modular-project</module>
+  </modules>
+
+  <properties>
+    <!-- Disable these to not interfere with "experimental" (borrowed) sources -->
+    <rat.skip>true</rat.skip>
+    <checkstyle.skip>true</checkstyle.skip>
+
+    <!-- Set up the project: we need Java11+ -->
+    <minimalJavaBuildVersion>11</minimalJavaBuildVersion>
+    <javaVersion>11</javaVersion>
+    <maven.compiler.release>${javaVersion}</maven.compiler.release>
+    <maven.compiler.source>${javaVersion}</maven.compiler.source>
+    <maven.compiler.target>${javaVersion}</maven.compiler.target>
+
+    <!-- Reproducible copy pasta -->
+    <project.build.outputTimestamp>2023-11-01T12:00:00Z</project.build.outputTimestamp>
+
+    <!-- Trick for IDEA IDE -->
+    <module.packaging>module</module.packaging>
+  </properties>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-source-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>attach-sources</id>
+            <goals>
+              <goal>jar-no-fork</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+
+  <profiles>
+    <profile>
+      <id>idea</id>
+      <properties>
+        <module.packaging>jar</module.packaging>
+      </properties>
+    </profile>
+  </profiles>
+
+</project>
