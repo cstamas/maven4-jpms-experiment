@@ -7,5 +7,8 @@ module org.slf4j {
 
     uses org.slf4j.spi.SLF4JServiceProvider;
 
+    provides org.slf4j.spi.SLF4JServiceProvider with
+            org.slf4j.simple.SimpleServiceProvider;
+
     requires java.base;
 }
