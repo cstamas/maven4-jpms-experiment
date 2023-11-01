@@ -11,7 +11,7 @@
   <artifactId>project-fat</artifactId>
   <packaging>${module.packaging}</packaging>
 
-  <name>Maven JPMS modular project :: Fat</name>
+  <name>Maven JPMS modular project :: fat</name>
 
   <dependencies>
     <dependency>

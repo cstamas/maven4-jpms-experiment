@@ -22,6 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.maven.api.DependencyCoordinate;
+import org.apache.maven.api.DependencyProperties;
 import org.apache.maven.api.Project;
 import org.apache.maven.api.Session;
 import org.apache.maven.api.plugin.Mojo;
@@ -37,7 +38,27 @@ public class StatusMojo implements Mojo {
 
     @Override
     public void execute() {
-        System.out.println(session.getMavenVersion());
+        List<DependencyCoordinate> flagged;
+        flagged = collectFlagged(DependencyProperties.FLAG_CLASS_PATH_CONSTITUENT, project.getDependencies());
+        if (!flagged.isEmpty()) {
+            System.out.println("CP:");
+            flagged.forEach(d -> System.out.println(d.getArtifactId()));
+        }
+        flagged = collectFlagged(DependencyProperties.FLAG_MODULE_PATH_CONSTITUENT, project.getDependencies());
+        if (!flagged.isEmpty()) {
+            System.out.println("MP:");
+            flagged.forEach(d -> System.out.println(d.getArtifactId()));
+        }
+        flagged = collectFlagged(DependencyProperties.FLAG_INCLUDES_DEPENDENCIES, project.getDependencies());
+        if (!flagged.isEmpty()) {
+            System.out.println("ID:");
+            flagged.forEach(d -> System.out.println(d.getArtifactId()));
+        }
+        flagged = collectFlagged(DependencyProperties.FLAG_INCLUDES_DEPENDENCIES, project.getDependencies());
+        if (!flagged.isEmpty()) {
+            System.out.println("ID:");
+            flagged.forEach(d -> System.out.println(d.getArtifactId()));
+        }
     }
 
     private List<DependencyCoordinate> collectFlagged(String flag, List<DependencyCoordinate> dependencyCoordinates) {

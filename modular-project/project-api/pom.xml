@@ -11,6 +11,6 @@
   <artifactId>project-api</artifactId>
   <packaging>${module.packaging}</packaging>
 
-  <name>Maven JPMS modular project :: API</name>
+  <name>Maven JPMS modular project :: api</name>
 
 </project>

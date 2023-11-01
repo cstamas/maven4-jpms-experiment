@@ -18,6 +18,7 @@
   <modules>
     <module>maven-plugin</module>
     <module>modular-project</module>
+    <module>modular-consumer</module>
   </modules>
 
   <properties>
