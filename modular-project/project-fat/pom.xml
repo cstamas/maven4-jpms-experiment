@@ -25,12 +25,6 @@
       <artifactId>project-impl</artifactId>
       <version>${project.version}</version>
       <type>java-source</type>
-      <exclusions>
-        <exclusion>
-          <groupId>*</groupId>
-          <artifactId>*</artifactId>
-        </exclusion>
-      </exclusions>
     </dependency>
   </dependencies>
 
@@ -49,6 +43,7 @@
             <configuration>
               <outputDirectory>${build.directory}/generated-sources/dependencies</outputDirectory>
               <excludes>**/module-info.java</excludes>
+              <excludeTransitive>true</excludeTransitive>
             </configuration>
           </execution>
         </executions>
