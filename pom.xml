@@ -43,6 +43,18 @@
   <dependencyManagement>
     <dependencies>
       <dependency>
+        <groupId>info.picocli</groupId>
+        <artifactId>picocli</artifactId>
+        <version>4.7.5</version>
+        <type>jar</type>
+      </dependency>
+      <dependency>
+        <groupId>info.picocli</groupId>
+        <artifactId>picocli-codegen</artifactId>
+        <version>4.7.5</version>
+        <type>annotation-processor</type>
+      </dependency>
+      <dependency>
         <groupId>org.junit</groupId>
         <artifactId>junit-bom</artifactId>
         <version>5.10.0</version>

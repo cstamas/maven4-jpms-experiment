@@ -15,6 +15,16 @@
 
   <dependencies>
     <dependency>
+      <groupId>info.picocli</groupId>
+      <artifactId>picocli</artifactId>
+      <type>jar</type>
+    </dependency>
+    <dependency>
+      <groupId>info.picocli</groupId>
+      <artifactId>picocli-codegen</artifactId>
+      <type>annotation-processor</type>
+    </dependency>
+    <dependency>
       <groupId>org.cstamas.maven.jpms.modular</groupId>
       <artifactId>project-fat</artifactId>
       <version>${project.version}</version>

@@ -16,13 +16,22 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.cstamas.maven.jpms.consumer.fatjar;
+package org.cstamas.maven.jpms.consumer.jar;
 
-import org.junit.jupiter.api.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import picocli.CommandLine;
 
-public class ConsumerTest {
-    @Test
-    void smoke() {
-        Consumer.main();
+@CommandLine.Command(name = "hej")
+public class Consumer implements Runnable {
+    private final Logger logger = LoggerFactory.getLogger(getClass());
+
+    @Override
+    public void run() {
+        logger.info("Hej!");
+    }
+
+    public static void main(String... args) {
+        new CommandLine(new Consumer()).execute(args);
     }
 }

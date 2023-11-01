@@ -19,13 +19,10 @@
 package org.cstamas.maven.jpms.consumer.fatmodule;
 
 import org.junit.jupiter.api.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class ConsumerTest {
     @Test
     void smoke() {
-        Logger logger = LoggerFactory.getLogger(getClass());
-        logger.info("Hej!");
+        Consumer.main();
     }
 }
