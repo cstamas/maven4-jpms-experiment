@@ -16,6 +16,7 @@
   <name>Maven JPMS experiment</name>
 
   <modules>
+    <module>maven-plugin</module>
     <module>modular-project</module>
   </modules>
 

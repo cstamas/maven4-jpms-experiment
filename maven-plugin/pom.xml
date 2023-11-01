@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>org.cstamas.maven.jpms</groupId>
+    <artifactId>experiment</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+  </parent>
+
+  <groupId>org.cstamas.maven.jpms.maven</groupId>
+  <artifactId>experiment-maven-plugin</artifactId>
+  <packaging>maven-plugin</packaging>
+
+  <name>Maven JPMS modular project maven-plugin</name>
+
+  <prerequisites>
+    <maven>${version.maven}</maven>
+  </prerequisites>
+
+  <properties>
+    <version.maven>4.0.0-alpha-9-SNAPSHOT</version.maven>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.apache.maven</groupId>
+      <artifactId>maven-api-core</artifactId>
+      <version>${version.maven}</version>
+      <scope>provided</scope>
+    </dependency>
+  </dependencies>
+
+</project>
