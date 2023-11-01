@@ -38,6 +38,7 @@
 
     <!-- Trick for IDEA IDE -->
     <module.packaging>module</module.packaging>
+    <annotation-processor.packaging>annotation-processor</annotation-processor.packaging>
   </properties>
 
   <dependencyManagement>
@@ -52,7 +53,7 @@
         <groupId>info.picocli</groupId>
         <artifactId>picocli-codegen</artifactId>
         <version>4.7.5</version>
-        <type>annotation-processor</type>
+        <type>${annotation-processor.packaging}</type>
       </dependency>
       <dependency>
         <groupId>org.junit</groupId>
@@ -86,6 +87,7 @@
       <id>idea</id>
       <properties>
         <module.packaging>jar</module.packaging>
+        <annotation-processor.packaging>jar</annotation-processor.packaging>
       </properties>
     </profile>
   </profiles>

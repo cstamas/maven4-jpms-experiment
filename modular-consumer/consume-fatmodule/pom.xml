@@ -22,7 +22,7 @@
     <dependency>
       <groupId>info.picocli</groupId>
       <artifactId>picocli-codegen</artifactId>
-      <type>annotation-processor</type>
+      <type>${annotation-processor.packaging}</type>
     </dependency>
     <dependency>
       <groupId>org.cstamas.maven.jpms.modular</groupId>
