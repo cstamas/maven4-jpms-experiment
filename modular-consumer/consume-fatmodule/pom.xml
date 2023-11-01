@@ -9,7 +9,7 @@
   </parent>
 
   <artifactId>consume-fatmodule</artifactId>
-  <packaging>${module.packaging}</packaging>
+  <packaging>jar</packaging>
 
   <name>Maven JPMS modular consumer :: fatmodule</name>
 
