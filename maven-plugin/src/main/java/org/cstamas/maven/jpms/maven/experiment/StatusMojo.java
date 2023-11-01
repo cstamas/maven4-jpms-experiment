@@ -19,7 +19,6 @@
 package org.cstamas.maven.jpms.maven.experiment;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import org.apache.maven.api.DependencyCoordinate;
 import org.apache.maven.api.DependencyProperties;
@@ -38,36 +37,34 @@ public class StatusMojo implements Mojo {
 
     @Override
     public void execute() {
-        List<DependencyCoordinate> flagged;
-        flagged = collectFlagged(DependencyProperties.FLAG_CLASS_PATH_CONSTITUENT, project.getDependencies());
-        if (!flagged.isEmpty()) {
-            System.out.println("CP:");
-            flagged.forEach(d -> System.out.println(d.getArtifactId()));
+        System.out.println("Dependencies BEGIN");
+        for (DependencyCoordinate dependencyCoordinate : project.getDependencies()) {
+            dumpDependency(dependencyCoordinate);
         }
-        flagged = collectFlagged(DependencyProperties.FLAG_MODULE_PATH_CONSTITUENT, project.getDependencies());
-        if (!flagged.isEmpty()) {
-            System.out.println("MP:");
-            flagged.forEach(d -> System.out.println(d.getArtifactId()));
-        }
-        flagged = collectFlagged(DependencyProperties.FLAG_INCLUDES_DEPENDENCIES, project.getDependencies());
-        if (!flagged.isEmpty()) {
-            System.out.println("ID:");
-            flagged.forEach(d -> System.out.println(d.getArtifactId()));
-        }
-        flagged = collectFlagged(DependencyProperties.FLAG_INCLUDES_DEPENDENCIES, project.getDependencies());
-        if (!flagged.isEmpty()) {
-            System.out.println("ID:");
-            flagged.forEach(d -> System.out.println(d.getArtifactId()));
-        }
+        System.out.println("Dependencies END");
     }
 
-    private List<DependencyCoordinate> collectFlagged(String flag, List<DependencyCoordinate> dependencyCoordinates) {
-        ArrayList<DependencyCoordinate> flagged = new ArrayList<>();
-        for (DependencyCoordinate dependencyCoordinate : dependencyCoordinates) {
-            if (dependencyCoordinate.getType().getTypeProperties().checkFlag(flag)) {
-                flagged.add(dependencyCoordinate);
-            }
+    private void dumpDependency(DependencyCoordinate d) {
+        String info = "* " + d.getGroupId() + ":" + d.getArtifactId() + ":" + d.getVersion() + " ";
+        ArrayList<String> flags = new ArrayList<>();
+        if (d.getType().getTypeProperties().checkFlag(DependencyProperties.FLAG_INCLUDES_DEPENDENCIES)) {
+            flags.add("ID");
         }
-        return flagged;
+        if (d.getType().getTypeProperties().checkFlag(DependencyProperties.FLAG_CLASS_PATH_CONSTITUENT)) {
+            flags.add("CP");
+        }
+        if (d.getType().getTypeProperties().checkFlag(DependencyProperties.FLAG_MODULE_PATH_CONSTITUENT)) {
+            flags.add("MP");
+        }
+        if (d.getType().getTypeProperties().checkFlag(DependencyProperties.FLAG_IS_JAVA_AGENT)) {
+            flags.add("AG");
+        }
+        if (d.getType().getTypeProperties().checkFlag(DependencyProperties.FLAG_IS_JAVA_ANNOTATION_PROCESSOR)) {
+            flags.add("AP");
+        }
+        if (d.getType().getTypeProperties().checkFlag(DependencyProperties.FLAG_IS_JAVA_DOCLET)) {
+            flags.add("DOC");
+        }
+        System.out.println(info + flags);
     }
 }
